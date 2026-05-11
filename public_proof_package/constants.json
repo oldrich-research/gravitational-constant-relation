@@ -1,0 +1,36 @@
+{
+  "description": "CODATA 2022 Fundamental Physical Constants",
+  "source": "Mohr, P. J., Newell, D. B., Taylor, B. N., & Tiesinga, E. (2025). CODATA recommended values of the fundamental physical constants: 2022. Reviews of Modern Physics, 97(2), 025002.",
+  "constants": {
+    "c": {
+      "value": "299792458",
+      "uncertainty": "0.0",
+      "units": "m s^-1",
+      "name": "speed of light in vacuum"
+    },
+    "h": {
+      "value": "6.62607015e-34",
+      "uncertainty": "0.0",
+      "units": "J s",
+      "name": "Planck constant"
+    },
+    "alpha_inv": {
+      "value": "137.035999177",
+      "uncertainty": "0.000000012",
+      "units": "",
+      "name": "inverse fine-structure constant"
+    },
+    "me": {
+      "value": "9.1093837139e-31",
+      "uncertainty": "0.0000000028e-31",
+      "units": "kg",
+      "name": "electron mass"
+    },
+    "G_obs": {
+      "value": "6.67430e-11",
+      "uncertainty": "0.00015e-11",
+      "units": "m^3 kg^-1 s^-2",
+      "name": "Newtonian constant of gravitation"
+    }
+  }
+}

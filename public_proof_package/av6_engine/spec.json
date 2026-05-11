@@ -1,0 +1,58 @@
+{
+  "atoms": {
+    "constants": [
+      "pi",
+      "e",
+      "alpha"
+    ],
+    "mass_ratios": [
+      "mp/me",
+      "mmu/me",
+      "mtau/me"
+    ],
+    "rationals": "p/q with p,q in [1,5], 1/5<=p/q<=5"
+  },
+  "budgets": [
+    20,
+    30,
+    40
+  ],
+  "costs": {
+    "add": 1,
+    "alpha": 4,
+    "div": 1,
+    "e": 3,
+    "exp": 3,
+    "log": 3,
+    "mass_ratio": 8,
+    "mul": 1,
+    "pi": 3,
+    "pow-1": 1,
+    "pow-2": 2,
+    "pow-3": 3,
+    "pow2": 1,
+    "pow3": 2,
+    "rat": "bitlen(p)+bitlen(q)",
+    "sub": 1
+  },
+  "mission": "AV6_broad_symbolic_null",
+  "mode": "pilot_beam_pruned_not_exhaustive",
+  "operators": [
+    "add",
+    "sub",
+    "mul",
+    "div",
+    "pow_{2,3,-1,-2,-3}",
+    "exp",
+    "log",
+    "tracked_subgrammar:A*alpha^n*exp(c*alpha)"
+  ],
+  "prune": {
+    "bin_width_log10": 0.25,
+    "per_bin": 4,
+    "per_cost_limit": 220,
+    "positive_and_negative_kept": true
+  },
+  "seed": 20260429,
+  "targets": "dimensionless only; G normalized to alpha_G,e; holdouts frozen from local Atlas/G-DECODE artifacts"
+}

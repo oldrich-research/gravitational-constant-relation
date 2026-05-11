@@ -1,0 +1,5 @@
+parameter,type,domain,description
+A,rational,"{p/q : 1 <= p <= 5, 1 <= q <= 30, gcd(p,q)=1, 1/3 <= p/q <= 5}","Declared 30-value reduced-rational prior, canonicalized by ascending value then denominator then numerator."
+n,integer,5 <= n <= 40,Dimension or interaction order.
+k,half-integer,0 <= k <= 10,Exponent scale factor (steps of 1/2).
+mass_anchor,categorical,Electron mass,Baseline mass anchor for scale factor.

@@ -1,0 +1,16 @@
+{
+  "codata2022": {
+    "label": "CODATA 2022 adjustment",
+    "G_obs": "6.67430e-11",
+    "G_err": "0.00015e-11",
+    "citation": "Mohr, Newell, Taylor, and Tiesinga, Rev. Mod. Phys. 97, 025002 (2025)",
+    "type": "adjustment"
+  },
+  "nist2026": {
+    "label": "NIST/Metrologia single-experiment result (2026-04-16)",
+    "G_obs": "6.67387e-11",
+    "G_err": "0.00038e-11",
+    "citation": "Schlamminger et al., Metrologia, online publication 2026-04-16; DOI 10.1088/1681-7575/ae570f",
+    "type": "single_experiment"
+  }
+}

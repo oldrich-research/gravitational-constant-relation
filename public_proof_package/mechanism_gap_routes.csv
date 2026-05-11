@@ -1,0 +1,7 @@
+route_class,expected_contribution,surveyed_output,obstruction
+Heat-kernel / Weyl-character / localization,Produce the alpha^21 counting from B3-orbit data,Leading behavior is alpha^5 exp(-5 alpha / 2),Active-root count along e1 is 5 and SO(7) orbit dimension ceiling is 18 < 21
+Instanton / Yang-Mills saddle,Generate the finite exponential dressing,Produces exp(-c / alpha),Semiclassical action puts alpha in the denominator rather than the numerator
+Soft resummation (YFS / Sudakov / threshold),Generate linear-alpha exponentiation,Produces exp(alpha * C * log) or logarithmic threshold factors,Energy-scale logs appear instead of a constant exp(-5 alpha / 2) factor
+Functional determinant on S7,Link compactification determinant to alpha^21 exp(-5 alpha / 2),No gauge zero-mode support and wrong determinant sign/size,H^1(S^7)=0 removes the needed zero-mode structure
+Beta-function / threshold coefficient,Explain the 5/2 coefficient from standard running,One-loop coefficients are 55/3 (pure YM) or 15 (N=1 SYM),Standard coefficients do not equal 5/2
+QED-vacuum / Kalinski-type kernel,Recover the electron-scale normalization,Numerically close kernel with fitted 2^(-1/38) factor,Does not supply an SO(7)-anchored derivation of the full alpha^21 exp(-5 alpha / 2) structure

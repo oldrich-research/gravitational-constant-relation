@@ -1,0 +1,202 @@
+{
+  "package": "g-decode_public_proof_package",
+  "generated_at_utc": "2026-05-10T13:00:00Z",
+  "note": "The files ledger excludes manifest.json itself to avoid self-referential checksum churn.",
+  "candidate_list_sha256": "37ee945afb33e5c8f4a63b9874338fb38d8cab1e8b1d2c113873a2e632ff92f2",
+  "bounded_prior_total_combinations": 22680,
+  "benchmarks": {
+    "codata2022": {
+      "table": "top_candidates.csv",
+      "top_candidate": {
+        "A": "4/3",
+        "n": 21,
+        "k": "5/2",
+        "G_pred": "6.674312282552968152E-11",
+        "residual_ppm": "1.840275829398",
+        "sigma": "0.081883686454"
+      }
+    },
+    "nist2026": {
+      "table": "nist2026_top_candidates.csv",
+      "top_candidate": {
+        "A": "4/3",
+        "n": 21,
+        "k": "5/2",
+        "G_pred": "6.674312282552968152E-11",
+        "residual_ppm": "66.270777370274",
+        "sigma": "1.163901455179"
+      }
+    }
+  },
+  "av6_engine": {
+    "publication_baseline_cost": 18,
+    "extending_costs": [
+      19,
+      20
+    ],
+    "canonical_rank1_invariant": {
+      "expression": "(4/3) * alpha^21 * exp((-5/2)*alpha)",
+      "rel_err": "1.85e-6",
+      "budgets_at_rank_1": [
+        30,
+        40
+      ],
+      "invariant_across_costs": [
+        18,
+        19,
+        20
+      ]
+    },
+    "sham_parity": {
+      "targets": 256,
+      "max_match_or_beat": {
+        "C18_budget40": "0/256",
+        "C19_budget40": "1/256",
+        "C20_budget40": "1/256"
+      },
+      "drift_attribution": "TRASH_BROAD_GRAMMAR pow expression at sham_index=28 carrying no alpha dependence"
+    }
+  },
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "26e0d1929275b46d985c28ec5b4885f4e6fc207d0ad9277773d58c4c13df3bba",
+      "bytes": 1055
+    },
+    {
+      "path": "README.md",
+      "sha256": "c9134d1f5d6adf96d205947a66c4390e37a98ea44d38b60db925d15d679df59c",
+      "bytes": 8079
+    },
+    {
+      "path": "SCOPE.md",
+      "sha256": "a91f16cff9dfacafa3029bb3dc54b9ca3592ecd3ea1721b62588474abecf87dd",
+      "bytes": 1442
+    },
+    {
+      "path": "benchmarks.json",
+      "sha256": "dc4f702cdb96c962485c00796aa9c6b2c9ecdbbc572a5fb6964ee656d6813d9e",
+      "bytes": 526
+    },
+    {
+      "path": "canonical_bounded_prior.py",
+      "sha256": "177307cf0f5de27ca464ed055250f589bfa7b9b1fad366f8a0232b8971344fe2",
+      "bytes": 2087
+    },
+    {
+      "path": "constants.json",
+      "sha256": "5ecb4eb2bb117dae1264cb117ed8bd29004ad4fb72972ff439fac8230949f5b4",
+      "bytes": 1032
+    },
+    {
+      "path": "declared_prior.csv",
+      "sha256": "d0e281740a8c759bf1d0d18781d66dbd7ca405b3191c778dc89e3292118a746c",
+      "bytes": 418
+    },
+    {
+      "path": "extended_99792_scan.py",
+      "sha256": "80d63e31bf7ff72b0eb92d38ef64058da65e8c82fdeae38896733cf40dcc26c2",
+      "bytes": 2483
+    },
+    {
+      "path": "extended_top_candidates.csv",
+      "sha256": "0e561a108672822cc178d17e160c98cd5a62ca43a93fb250b69a64a99697a8e0",
+      "bytes": 74
+    },
+    {
+      "path": "kalinski_rochester_capture_2026-04-23.md",
+      "sha256": "0caa0f143a48ac53712dc2225c8e94f7d0699d81a22b7f6880504e8ab9929a1c",
+      "bytes": 1147
+    },
+    {
+      "path": "mechanism_gap_routes.csv",
+      "sha256": "150d92d3204c8909ab6b8104d524f09d72a81afea6c29efb3cd145ecfb87e0e8",
+      "bytes": 1277
+    },
+    {
+      "path": "metrology_residuals.csv",
+      "sha256": "7e61a38cc055e0cc1f1a3d1408f6d574c8eb9b21caa7c3197094f4348c39de09",
+      "bytes": 1447
+    },
+    {
+      "path": "nist2026_top_candidates.csv",
+      "sha256": "ccdeba2969f0db210f46f141d6e3dd968b096dce9f29c5c5194a0f1af1d8e94f",
+      "bytes": 741
+    },
+    {
+      "path": "scan.py",
+      "sha256": "14fd953fa663fdfb4b186f0ab29d47dff406a59eb7f2d44bcaf8a77ff04ffd46",
+      "bytes": 3978
+    },
+    {
+      "path": "top_candidates.csv",
+      "sha256": "d681f7ffe3c1042b738791dad66c2d10fb1074379fca3430cfef475e7ab0166a",
+      "bytes": 597
+    },
+    {
+      "path": "av6_engine/launch_jl15.sh",
+      "sha256": "9cd1ac0d19a97bf158ccc568617fa4b19d7f76265d197d448a119a9efc4e9bb5",
+      "bytes": 3719
+    },
+    {
+      "path": "av6_engine/run_av6_exhaustive_c40_jl15.jl",
+      "sha256": "80b6715987af5a3a39b286de2f65bbe518aebce2ff82008e870f532e64b0646f",
+      "bytes": 36019
+    },
+    {
+      "path": "av6_engine/spec.json",
+      "sha256": "d57bf956bcd849c8a0e670e5e876f560f2d6f414da8727c00150ef5d00f56943",
+      "bytes": 1045
+    },
+    {
+      "path": "av6_outputs/c18/bounded_shell_stats.csv",
+      "sha256": "9b3edd8a8d58a6b53135f8935a09da483758b92e9669704be2b3735f2df8d600",
+      "bytes": 863
+    },
+    {
+      "path": "av6_outputs/c18/diff_ledgers_publication_verdict.md",
+      "sha256": "138b3edc8d415945c0bf8b7c853048f13ec8fcfd9f4500e12098840475a5651c",
+      "bytes": 17630
+    },
+    {
+      "path": "av6_outputs/c18/same_target_rank_tables.csv",
+      "sha256": "cad1df917ef9e0e46da720f0c0741fb2f1c332585da6e0dd66b6824061897e7b",
+      "bytes": 41972
+    },
+    {
+      "path": "av6_outputs/c18/sham_best_ledger.csv",
+      "sha256": "33899c79287296295dcbac5d2d382850150d66ab5409192a1322290b5468ade7",
+      "bytes": 106255
+    },
+    {
+      "path": "av6_outputs/c19/bounded_shell_stats.csv",
+      "sha256": "a6860e193b46d4e427898c128c6a1b076f225f66e4ed9d149d289d4204a3a52d",
+      "bytes": 919
+    },
+    {
+      "path": "av6_outputs/c19/same_target_rank_tables.csv",
+      "sha256": "a18642bb4d8bf42f6e2bf06d53a598336433309cf3edbd1b9b9208355c4a7a47",
+      "bytes": 42016
+    },
+    {
+      "path": "av6_outputs/c19/sham_best_ledger.csv",
+      "sha256": "25e95c1ca69a7c74cec2b9d380a50b42dbd1ee5c150ee8c72203550cfa71da69",
+      "bytes": 105764
+    },
+    {
+      "path": "av6_outputs/c20/bounded_shell_stats.csv",
+      "sha256": "930bb0e77a7f36f86d95f720bb1c0b048ed66b6dc197a9e861ade8b816ab9679",
+      "bytes": 976
+    },
+    {
+      "path": "av6_outputs/c20/same_target_rank_tables.csv",
+      "sha256": "dc697a6199f9fc94187976dff54d3c7c4fedb9e8b040269d3a690adf0f3e2d72",
+      "bytes": 42025
+    },
+    {
+      "path": "av6_outputs/c20/sham_best_ledger.csv",
+      "sha256": "64303f0c04ac46a42943389c5dc941a97d0472b300995e899471c546d0e7e05b",
+      "bytes": 105084
+    }
+  ]
+}

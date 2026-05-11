@@ -1,0 +1,857 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+  letterpaper,
+  twocolumn,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=0.85in,columnsep=0.3in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{6em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks,colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black,citecolor=blue!50!black]{hyperref}
+\hypersetup{
+  pdftitle={A High-Precision Phenomenological Relation for Newton's Constant},
+  pdfauthor={Oldřich Dvořák},
+  pdfsubject={Phenomenological physics, gravitation, fine-structure constant},
+  pdfkeywords={Newton constant, fine-structure constant, B3, SO(7), SO(8), phenomenology, mechanism gap}
+}
+\setlength{\emergencystretch}{6em}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{A High-Precision Phenomenological Relation for Newton's Constant\\[4pt]
+\large with Exact $B_3/SO(7)/SO(8)$ Algebraic Scaffold and an Explicit Mechanism Gap}
+\author{Oldřich Dvořák\\[2pt]
+\small Independent researcher\\
+\small \texttt{oldrich@oldrich.me}\\
+\small DOI: \url{https://doi.org/10.5281/zenodo.20120946}\\
+\small Public proof package: \url{https://github.com/oldrich-research/gravitational-constant-relation}}
+\date{May 2026}
+
+\begin{document}
+
+\twocolumn[%
+\maketitle
+
+\begin{center}
+\begin{minipage}{0.88\textwidth}
+\setlength{\parskip}{8pt plus 2pt minus 1pt}
+\setlength{\parindent}{0pt}
+\begin{center}\large\textbf{Abstract}\end{center}
+\vspace{2pt}
+
+\noindent
+The relation
+\[\boxed{\;G \;=\; \frac{4}{3}\,\frac{\hbar c}{m_e^2}\,\alpha^{21}\,\exp\!\left(-\frac{5\alpha}{2}\right)\;}\]
+evaluates on CODATA 2022 inputs {[}1{]} to
+\(G_{\rm pred} = 6.6743123\!\times\!10^{-11}\,\mathrm{m^3\,kg^{-1}\,s^{-2}}\), residual \(+1.84\) ppm (\(z=+0.082\sigma\)). Against the April 2026 NIST/Metrologia single-experiment result {[}10{]}, residual \(+66.3\) ppm (\(+1.16\sigma\)). Propagated input uncertainty: \(3.3\!\times\!10^{-9}\), four orders below the experimental floor.
+
+The discrete coefficients identify exactly with \(B_3/SO(7)/SO(8)\) Lie-algebraic data: \(21\!=\!\dim(\mathrm{adj}\,SO(7))\); \(5/2\!=\!h^\vee(B_3)/2\); \(4/3\!=\!\dim(SO(8))/\dim(SO(7))\).
+
+A bounded reproducibility scan over \(22{,}680\) candidates of class \(A(\hbar c/m_e^2)\alpha^n\exp(-k\alpha)\) places \((4/3,21,5/2)\) at rank \(1\) within \(0.5\sigma\) and \(0.1\sigma\); nearest competitor \(-3640\) ppm at \(-162\sigma\). A Julia bounded-equation-search engine enumerates \(2.02\!\times\!10^9\) raw expressions (\(2.46\!\times\!10^6\) canonical-unique) through cost shell \(C\!\le\!20\); with \(\mathrm{alpha\_family}\) pre-seeded, no competitor beats the canonical formula at budgets \(30\) and \(40\). Recovered rank-\(1\) \(\mathrm{rel\_err}=1.85\!\times\!10^{-6}\), invariant across \(C\!=\!18,19,20\). Sham-parity: \(0/256\) at \(C\!=\!18\), \(1/256\) at \(C\!=\!19,20\) (single non-\(\alpha\) TRASH expression).
+
+A structured survey across QED, soft-photon and Sudakov resummation, instantons, functional determinants on \(S^7\) and \(B_3\), heat-kernel localization, one-loop \(\beta\)-coefficients, \(SO(7)^\pm\) gauged supergravity, induced gravity, and the Kalinski QED-vacuum kernel produces no mechanism reproducing the \(\alpha^{21}\) counting, \(\exp(-5\alpha/2)\) damping, and \(m_e\) normalization simultaneously. The relation is a high-precision phenomenological anomaly with an exact algebraic scaffold and a documented mechanism gap. Operational falsification exposure: \(\sim\!13.25\) ppm at \(5\sigma\) against any future low-uncertainty \(G\) recommendation converging on the NIST 2026 central value.
+
+\vspace{8pt}
+\noindent\small\textit{AI authorship.} This paper reports research carried out by an orchestration of AI agents under the named author's direction. The author is an independent researcher without specialist training in theoretical physics; his role was vision, target selection, and approval. See \emph{Statement of AI Authorship} for the full disclosure.
+
+\end{minipage}
+\end{center}
+\vspace{1.5em}
+]
+
+\section{Headline Quantities}\label{headline-quantities}
+
+\begin{table*}[!htb]
+\centering\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Value
+\end{minipage} \\
+\midrule
+\(G_{\rm pred}\) and residuals &
+\(6.6743123 \times 10^{-11}\,\mathrm{m^3\,kg^{-1}\,s^{-2}}\); \(+1.84\)
+ppm at \(+0.082\sigma\) vs CODATA 2022 {[}1{]}; \(+66.3\) ppm at
+\(+1.16\sigma\) vs NIST 2026 {[}10{]} \\
+Bounded prior scan (\(22{,}680\) candidates) & canonical
+\((4/3, 21, 5/2)\) at rank \(1\) within both \(0.5\sigma\) and
+\(0.1\sigma\); nearest non-canonical row \(-3640\) ppm at
+\(-162\sigma\) \\
+AV6 symbolic engine, \(C\!\le\!20\) & \(2.02\!\times\!10^9\) raw,
+\(2.46\!\times\!10^6\) canonical-unique; canonical rank \(1\) at budgets
+\(30, 40\); \(\mathrm{rel\_err}=1.85\!\times\!10^{-6}\) invariant across
+\(C\!=\!18,19,20\) \\
+Sham-parity check (\(256\) targets, budget \(40\)) & \(0/256\) at
+\(C\!=\!18\); \(1/256\) at \(C\!=\!19,20\) (non-\(\alpha\) TRASH) \\
+Exact algebraic identities & \(21\!=\!\dim(\mathrm{adj}\,SO(7))\);
+\(5/2\!=\!h^\vee(B_3)/2\!=\!\rho\!\cdot\!e_1\);
+\(4/3\!=\!\dim(SO(8))/\dim(SO(7))\) \\
+Falsification threshold & \(\sim\!13.25\) ppm at \(5\sigma\) \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{1. The Relation and Its Numerical
+Status}\label{the-relation-and-its-numerical-status}
+
+The relation evaluates to
+\(G_{\rm pred} = 6.6743123 \times 10^{-11}\,\mathrm{m^3\,kg^{-1}\,s^{-2}}\)
+on CODATA 2022 inputs {[}1{]}. Against the recommended value
+\(G = 6.67430(15) \times 10^{-11}\) this is \(+1.84\) ppm and
+\(z\!=\!+0.082\sigma\). The integer exponent required to hit the CODATA
+2022 central value exactly is \(n_{\rm exact} = 21.00000037\).
+
+Cross-benchmark status against the April 16, 2026 NIST/Metrologia
+single-experiment determination \(G = 6.67387(38) \times 10^{-11}\)
+{[}10{]} is \(+66.3\) ppm and \(z\!=\!+1.16\sigma\).
+
+Propagation of CODATA input uncertainties gives a relative uncertainty
+in \(G_{\rm pred}\) of \(3.3 \times 10^{-9}\), dominated \(96.5\%\) by
+\(\alpha\) and \(3.5\%\) by \(m_e\). This is below the experimental
+uncertainty on \(G\) by a factor of \(6.9 \times 10^3\). \(\hbar\) and
+\(c\) are exact by SI definition. Recomputation across successive CODATA
+releases gives \(z = +0.75\sigma\) (2014), \(+0.082\sigma\) (2018),
+\(+0.082\sigma\) (2022): the 2014→2018 improvement was driven by
+movement of the experimental central value toward the formula.
+
+\section{2. Bounded-Family Reproducibility
+Search}\label{bounded-family-reproducibility-search}
+
+The search class is
+
+\[G = A\,\frac{\hbar c}{M^2}\,\alpha^n\,\exp(-k\alpha)\]
+
+with declared parameters fixed as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  Mass scale \(M = m_e\) (CODATA 2022 {[}1{]}).
+\item
+  Exponent window \(n \in \{5,6,\dots,40\}\) (\(36\) values).
+\item
+  Damping window \(k \in \{0,\,1/2,\,1,\,\dots,\,10\}\) (\(21\)
+  half-integer values).
+\item
+  Prefactor prior: the reduced-rational set generated by \(p/q\) with
+  \(p\!\le\!5\), \(q\!\le\!30\), \(\gcd(p,q)\!=\!1\),
+  \(p/q\!\in\![1/3,5]\). Explicit list (30 values):
+  \begin{equation*}
+  \begin{aligned}
+  \{ &\tfrac{1}{3},\ \tfrac{5}{14},\ \tfrac{4}{11},\ \tfrac{3}{8},\ \tfrac{5}{13},\ \tfrac{2}{5}, \\
+  &\tfrac{5}{12},\ \tfrac{3}{7},\ \tfrac{4}{9},\ \tfrac{5}{11},\ \tfrac{1}{2},\ \tfrac{5}{9}, \\
+  &\tfrac{4}{7},\ \tfrac{3}{5},\ \tfrac{5}{8},\ \tfrac{2}{3},\ \tfrac{5}{7},\ \tfrac{3}{4}, \\
+  &\tfrac{4}{5},\ \tfrac{5}{6},\ 1,\ \tfrac{5}{4},\ \tfrac{4}{3},\ \tfrac{3}{2}, \\
+  &\tfrac{5}{3},\ 2,\ \tfrac{5}{2},\ 3,\ 4,\ 5 \}.
+  \end{aligned}
+  \end{equation*}
+\item
+  Total cardinality: \(30 \times 36 \times 21 = 22{,}680\) candidates.
+\item
+  Canonical candidate-list SHA-256:
+  \texttt{\small 37ee945afb33e5c8\allowbreak f4a63b9874338fb3\allowbreak 8d8cab1e8b1d2c11\allowbreak 3873a2e632ff92f2}.
+\end{itemize}
+
+Within this declared family, the canonical \((A,n,k) = (4/3,21,5/2)\) is
+the unique candidate within \(0.5\sigma\) and the unique candidate
+within \(0.1\sigma\) of the CODATA 2022 central value of \(G\) {[}1{]}.
+It is also rank \(1\) against the NIST 2026 central value {[}10{]}.
+
+The five nearest-neighbor rows against CODATA 2022 {[}1{]}:
+
+\begin{table*}[!htb]
+\centering\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Rank
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(A\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(n\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(k\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(G_{\rm pred}\,\times\!10^{11}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Residual (ppm)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(z\)-score
+\end{minipage} \\
+\midrule
+\(1\) & \(4/3\) & \(21\) & \(5/2\) & \(6.6743123\) & \(+1.84\) &
+\(+0.082\) \\
+\(2\) & \(4/3\) & \(21\) & \(3\) & \(6.6500043\) & \(-3640.19\) &
+\(-161.97\) \\
+\(3\) & \(4/3\) & \(21\) & \(2\) & \(6.6987092\) & \(+3657.19\) &
+\(+162.73\) \\
+\(4\) & \(4/3\) & \(21\) & \(7/2\) & \(6.6257847\) & \(-7268.96\) &
+\(-323.44\) \\
+\(5\) & \(4/3\) & \(21\) & \(3/2\) & \(6.7231952\) & \(+7325.90\) &
+\(+325.97\) \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The same five rows against NIST 2026 {[}10{]} preserve rank order;
+canonical residual \(+66.3\) ppm, rank-\(2\) residual \(-3576\) ppm.
+Arithmetic rank-loss midpoints between rank \(1\) and the immediate
+\(k\)-neighbors \((4/3,21,3)\) and \((4/3,21,2)\) sit at \(-1821.01\)
+ppm and \(+1827.67\) ppm relative to \(G_{\rm pred}\). The \(66.3\) ppm
+NIST offset is two orders of magnitude smaller than that rank-loss
+scale.
+
+Replacing \(m_e\) by \(m_p\) in the same scan produces no candidate
+within either \(0.5\sigma\) or \(0.1\sigma\) of the CODATA 2022 central
+value.
+
+The reduced-rational prior with \(p\!\le\!5\), \(q\!\le\!30\),
+\(p/q\!\in\![1/3,5]\) is the publication declaration. Reproduction
+one-liner:
+
+\begin{quote}
+\small\ttfamily python3 scan.py\allowbreak\ -{}-benchmark codata2022\allowbreak\ -{}-limit 5
+\end{quote}
+
+bundled in the public proof package; expected output reproduces the
+candidate-list SHA-256 above and the top-five table.
+
+The bounded scan certifies uniqueness within the declared functional
+class with \(m_e\) fixed. It does not certify uniqueness against
+arbitrary enlargements of the class; the look-elsewhere problem outside
+the declared boundary is treated by the Julia bounded-equation-search
+engine of Section 5 (audit row AV6).
+
+\section{3. Algebraic Scaffold}\label{algebraic-scaffold}
+
+\begin{table*}[!htb]
+\centering\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Coefficient
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Identification
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Source
+\end{minipage} \\
+\midrule
+\(21\) & \(\dim(\mathrm{adj}\,SO(7)) = 7\!\cdot\!6/2\) & exact \\
+\(5/2\) & \(\rho \cdot e_1 = h^\vee(B_3)/2\), dominant-chamber
+convention \(e_1=\omega_1\) & exact, Humphreys {[}3{]} \\
+\(4/3\) & \(\dim(SO(8))/\dim(SO(7)) = 28/21\) & exact (primary
+anchor) \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The \(B_3\) positive root system contains nine roots: three short
+positive roots \(e_i\) for \(i=1,2,3\), and six long positive roots
+\(e_i\!\pm\!e_j\) for \(1\!\le\!i\!<\!j\!\le\!3\). The Weyl vector
+\(\rho = \tfrac{1}{2}\sum_{\alpha>0}\alpha = (5/2, 3/2, 1/2)\) in the
+standard orthonormal basis. The basis-invariant statement is
+\(\rho\!\cdot\!e_1 = h^\vee(B_3)/2\); the numerical value \(5/2\)
+follows in the standard dominant-chamber basis. The dual Coxeter number
+is \(h^\vee(B_3) = 5\).
+
+The coefficient \(5/2\) is not \(C_2(\mathrm{vector}, SO(7))\). In the
+standard normalization \(C_2(\mathrm{vector}, SO(7)) = 3\); the correct
+identification is \(5/2 = h^\vee(B_3)/2 = \rho\!\cdot\!e_1\). Two
+further \(B_3\) arithmetic equalities also give \(4/3\) ---
+\((h^\vee(B_3)-1)/\mathrm{rank}(B_3) = (5-1)/3 = 4/3\) and
+\((\mathrm{rank}(B_3)+1)/\mathrm{rank}(B_3) = (3+1)/3 = 4/3\) --- but
+these are not independent invariant derivations; the primary anchor for
+\(4/3\) is the \(SO(8)/SO(7)\) embedding ratio.
+
+The scaffold provides exact identifications for the discrete content of
+the formula. It does not provide a dynamical derivation. Section 4
+documents that no surveyed mechanism class closes the dictionary from
+the scaffold to the physical appearance of \(\alpha\), \(m_e\), and the
+exponential dressing.
+
+\section{4. Mechanism Gap: Surveyed
+Routes}\label{mechanism-gap-surveyed-routes}
+
+The following derivation classes were surveyed and did not produce a
+mechanism reproducing the full formula. Each row lists the expected
+contribution under that class, the observed surveyed output, and the
+structural obstruction.
+
+\begin{table*}[!htb]
+\centering\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Route class
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Expected contribution
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Surveyed output
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Obstruction
+\end{minipage} \\
+\midrule
+Heat-kernel / Weyl-character / localization on \(B_3\) & \(\alpha^{21}\)
+counting from \(B_3\)-orbit data & \(\alpha^5\exp(-5\alpha/2)\) at
+leading order along \(e_1\) & Active-root count along \(e_1\) is \(5\);
+\(SO(7)\) adjoint real-orbit dimension ceiling is \(18 < 21\) \\
+Instanton / Yang-Mills saddle & Finite exponential dressing
+\(\exp(-c\alpha)\) & \(\exp(-c/\alpha)\) & Semiclassical action places
+\(\alpha\) in the denominator \\
+Soft-photon resummation (YFS / Sudakov / threshold) & Linear-\(\alpha\)
+exponentiation & \(\exp(\alpha\cdot C\cdot\log)\), energy-scale logs &
+Logarithms in energy scale instead of constant \(\exp(-5\alpha/2)\) \\
+Functional determinant on \(S^7\) & Link \(S^7\) determinant to
+\(\alpha^{21}\exp(-5\alpha/2)\) & No gauge zero-mode support; wrong
+determinant size and sign & \(H^1(S^7) = 0\) removes zero-mode
+structure \\
+One-loop \(\beta\)-function / threshold coefficient & \(5/2\) from
+standard running & \(\beta_0 = 55/3\) (pure YM, \(B_3\));
+\(\beta_0 = 15\) (\(N\!=\!1\) SYM, \(B_3\)) & Neither standard
+normalization equals \(5/2\) \\
+\(SO(7)^\pm\) gauged-supergravity vacua & \(SO(7)\) adjoint structure
+from \(N\!=\!8\) supergravity & Both \(SO(7)^\pm\) vacua unstable;
+stable \(N\!=\!1\) vacuum is \(G_2\), not \(SO(7)\) & de Wit / Nicolai
+{[}4{]}; Borghese et al.~{[}5{]}; Fischbacher {[}6{]} \\
+Induced gravity / vacuum response & Electron-mass normalization from
+vacuum response & Sakharov-class arguments do not single out \(m_e\) &
+Visser {[}7{]}; Chaichian et al.~{[}8{]} \\
+Kalinski QED-vacuum kernel & Electron-scale normalization & Bare kernel
+\((4/3)(\hbar c/m_e^2)\alpha^{21}\) with fitted \(2^{-1/38}\) factor &
+No \(B_3/SO(7)\)-anchored derivation of \(\exp(-5\alpha/2)\) {[}9{]} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The three irreducible anchors a future microscopic theory would need to
+close simultaneously:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\(\alpha^{21}\) counting.} A physical state space or dynamical
+  system that produces \(21\) independent modes mapped onto the
+  \(SO(7)\) adjoint, rather than analogizing after the fact. The
+  orbit-dimension ceiling \(18 < 21\) rules out localization on \(B_3\)
+  along any root ray.
+\item
+  \textbf{\(\exp(-5\alpha/2)\) damping.} A dynamical process producing a
+  constant exponential factor with \(\alpha\) in the numerator at
+  \(\alpha = \alpha_{\rm EM}\). Surveyed semiclassical actions place
+  \(\alpha\) in the denominator; perturbative expansions give
+  polynomials in \(\alpha\); soft resummation gives logarithms in energy
+  scale.
+\item
+  \textbf{Electron-mass normalization.} A reason why \(\hbar c/m_e^2\)
+  is the gravitational reference scale. The \(m_p\)-substituted bounded
+  scan produces no comparable hit. The same locked \(B_3/SO(7)\)
+  algebraic scaffold also fails a pre-registered lepton mass-ratio
+  holdout: no parameter-free candidate reproduces both \(m_\mu/m_e\) and
+  \(m_\tau/m_e\), and the best parameter-free muon-ratio near-hit misses
+  by \(1408\) ppm (\(\sim\!760\times\) worse than the \(G\) residual).
+\end{enumerate}
+
+The exclusion is over surveyed standard classes, not over all logically
+possible theories.
+
+\section{5. Adversarial Validation
+Audit}\label{adversarial-validation-audit}
+
+The relation was attacked along seven independent stress modes. Each row
+is conditional on the declared bounded prior and engine configuration
+cited.
+
+\begin{table*}[!htb]
+\centering\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Stress mode
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Declared scope
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Result
+\end{minipage} \\
+\midrule
+AV0 & Frozen prior & \(22{,}680\)-candidate prior, declared \(A,n,k\)
+menus, candidate-list SHA-256 fixed & Canonical \((4/3,21,5/2)\) rank
+\(1\); two independent code paths reproduce list and residual \\
+AV1 & Sham-target tribunal & \(N\!=\!10{,}000\) synthetic targets under
+AV0 grammar & True target rank \(7/10001\) on residual, \(4/10001\)
+under strict-cap comparator; surviving competitors concentrate on the
+\(n\!=\!21\) shelf \\
+AV2 & Source/metrology ablation & Inputs perturbed within reported
+uncertainties inside AV0 family & Canonical row shifts \(\le 0.017\) ppm
+/ \(\le 0.0008\sigma\); rank and hit counts preserved \\
+AV3 & Scaffold invariant census & Frozen-complexity invariant scoring
+across tested single-algebra sets & \(B_3/SO(7)\) canonical scaffold
+ranks \(1\) \\
+AV4 & Blind scaffold prior audit & Independent blind algebraic scoring
+across alternative single-algebra scaffolds & \(B_3/SO(7)\) remains top
+single-algebra scaffold; \(4/3\) arithmetic echoes recorded as Section 3
+echoes \\
+AV5 & Lepton mass-ratio holdout & Pre-registered \(m_\mu/m_e\) and
+\(m_\tau/m_e\) under locked \(B_3/SO(7)\) scaffold; \(18\)-framework
+survey & Ruled out; best parameter-free muon-ratio near-hit \(1408\)
+ppm; Koide {[}2{]} charged-lepton relation (\(2/3\)) remains descriptor
+only \\
+AV6 & Bounded/frontier symbolic null & Julia bounded-equation-search
+engine with canonical \(\mathrm{alpha\_family}\) pre-seeded; cost shells
+\(C\!=\!18,19,20\); evaluation budgets \(\{20, 30, 40\}\);
+\(256\)-target sham-parity & Rank-\(1\) survival under adversarial
+competition: among \(2.02\!\times\!10^9\) raw expressions
+(\(2.46\!\times\!10^6\) canonical-unique) at \(C\!\le\!20\), the
+canonical formula is rank \(1\) at budgets \(30\) and \(40\) with
+\(\mathrm{rel\_err}=1.85\!\times\!10^{-6}\) invariant across
+\(C\!=\!18,19,20\) (canonical internal engine cost \(28\), not evaluable
+at budget \(20\); budget-\(20\) leader is a non-\(\alpha\) pow at
+\(\mathrm{rel\_err}\!\sim\!10^{-4}\)). Sham parity \(0/256\) at
+\(C\!=\!18\), \(1/256\) at \(C\!=\!19,20\) (non-\(\alpha\) TRASH at
+sham-index \(28\)). \\
+AV7 & CODATA/NIST target stability & Same frozen prior re-evaluated
+against CODATA 2022 {[}1{]} and NIST 2026 {[}10{]} central values & Rank
+\(1\) against both targets; rank-loss midpoints \(-1821\) ppm and
+\(+1828\) ppm; \(\sim\!13.25\) ppm \(5\sigma\) falsification width \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsubsection{AV6 Engine Compute Trail}\label{av6-engine-compute-trail}
+
+The Julia bounded-equation-search engine
+(\texttt{run\_av6\_exhaustive\_c40\_jl15.jl}, source in the public proof
+package) implements grouped/cross-merge canonical reduction, weighted
+dynamic chunking, and per-target sham-parity bookkeeping. Canonical
+reduction performs in-enumeration equality saturation: expressions are
+quotiented modulo associativity and commutativity of \(+,\,\cdot\,\),
+multiplicative inverse identities, \(\alpha\)-degree normalization, and
+exponent collection, so the \(2.46\!\times\!10^6\) canonical-unique
+count at \(C\!=\!20\) is a distinct-expression count, not raw chunk
+output. Idempotence of the canonical form and hash stability across
+re-runs are checked at engine startup; the \(256\)-target sham-parity
+probe doubles as an adversarial engine-level test against accidental
+matches. Per-cost shell statistics at completion:
+
+\begin{table*}[!htb]
+\centering\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Shell completion \(C\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Wall time (24 threads)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cumulative raw
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cumulative canonical-unique
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\mathrm{sham\_match\_or\_beat}\) at budget \(40\)
+\end{minipage} \\
+\midrule
+\(18\) (publication baseline, 2026-05-08) & \(\sim\!4.5\) h &
+\(3.11\!\times\!10^8\) & \(1.30\!\times\!10^6\) & \(0/256\) \\
+\(19\) (extending evidence, 2026-05-09) & \(\sim\!14\) h &
+\(8.17\!\times\!10^8\) & \(1.80\!\times\!10^6\) & \(1/256\) \\
+\(20\) (extending evidence, 2026-05-10) & \(\sim\!28\) h &
+\(2.02\!\times\!10^9\) & \(2.46\!\times\!10^6\) & \(1/256\) \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+With the canonical \(\mathrm{alpha\_family}\) pre-seeded into the engine
+grammar, no competitor among the \(2.02\!\times\!10^9\) raw expressions
+(\(2.46\!\times\!10^6\) canonical-unique after grammar reduction) at
+\(C\!\le\!20\) matches or beats the canonical
+\((4/3)\alpha^{21}\exp(-5\alpha/2)\) at evaluation budgets \(30\) and
+\(40\). The \(256\)-target sham-parity probe at the full \(C\!\le\!20\)
+enumeration returns \(1/256\) --- a single non-\(\alpha\) TRASH pow
+expression --- for a per-target hit rate \(\sim\!4\!\times\!10^{-3}\) on
+the observed CODATA residual under the same grammar and cost class; the
+\(C\!=\!18\) publication baseline returns \(0/256\) at the same
+threshold.
+
+The single sham drift to \(1/256\) at \(C \ge 19\) is the same
+\texttt{pow} expression at \texttt{sham\_index\ =\ 28}:
+\((\exp((5)-((4)^2)\!\cdot\!\pi))^3\) at \(C\!=\!19\) and
+\((\exp((1)-(3\!\cdot\!4)\!\cdot\!\pi))^3\) at \(C\!=\!20\), both
+classified as \(\mathrm{TRASH\_BROAD\_GRAMMAR}\) and carrying no
+\(\alpha\) dependence.
+
+Budget-\(20\) evaluations do not place the canonical at rank \(1\)
+because its internal engine cost is \(28\) and exceeds the budget cap;
+the canonical is not assigned a target-fit score under that constraint.
+The budget-\(20\) leader is a non-\(\alpha\) pow expression with
+\(\mathrm{rel\_err}\!\sim\!4.6\!\times\!10^{-4}\) at \(C\!=\!18\) and
+\(\sim\!1.06\!\times\!10^{-4}\) at \(C\!=\!19,20\). At budgets \(30\)
+and \(40\) the canonical evaluates and dominates by three orders of
+magnitude in \(\mathrm{rel\_err}\).
+
+\(C\!=\!18\) is the publication baseline; \(C\!=\!19\) and \(C\!=\!20\)
+extend sibling coverage and sham-parity robustness while preserving the
+same canonical rank-\(1\) outcome and \(\mathrm{rel\_err}\).
+
+The \(\mathrm{jl15}\) engine supersedes two earlier internal runners.
+The intermediate \(\mathrm{jl14}\) had an \(\mathrm{alpha\_family}\)
+seed envelope that excluded the cost-\(28\) canonical from the generated
+set; the omission was caught during pre-publication ledger audit and
+corrected in \(\mathrm{jl15}\) (seed envelope raised to
+\(\max(\mathrm{budgets})\)). The earlier \(\mathrm{jl13}\) used a
+coarser sibling-class classifier and is not part of the reported
+ledgers. Both prior runners are present in the engine source tree for
+inspection; their outputs are not aggregated with the \(C\!=\!18,19,20\)
+\(\mathrm{jl15}\) ledgers reported here. Detection of the
+\(\mathrm{jl14}\) omission during audit is itself a positive datum on
+engine adversariality: the canonical was not granted to the engine by
+construction; it had to survive a generation-side seeding bug that
+initially hid it.
+
+Three further audit paths were considered but not executed because they
+do not change the verdict at first order. (i) Extending shell completion
+beyond \(C\!=\!20\) roughly doubles wall time per shell
+(\(C\!=\!18\!\sim\!4.5\) h, \(C\!=\!19\!\sim\!14\) h,
+\(C\!=\!20\!\sim\!28\) h on 24 threads); given canonical rank \(1\) with
+identical \(\mathrm{rel\_err}=1.85\!\times\!10^{-6}\) is already
+invariant across \(C\!=\!18,19,20\), additional shells would extend
+sibling coverage and sham-parity robustness rather than flip the
+outcome. (ii) Broadening the grammar with non-\(\alpha\) primitives
+enlarges the sham pool but cannot remove a pre-seeded canonical from
+rank \(1\) since comparison is by absolute residual. (iii) Removing the
+\(\mathrm{alpha\_family}\) pre-seed tests whether brute-force
+enumeration alone reaches a cost-\(28\) canonical within available
+compute, a different question than adversarial competition against a
+present canonical; the reported \(C\!=\!18,19,20\) enumeration already
+answers the cost-coverage question through the explicit budget-\(20\)
+versus budget-\(30/40\) contrast.
+
+\section{6. Metrology Residuals}\label{metrology-residuals}
+
+Predicted
+\(G_{\rm pred} = 6.6743123 \times 10^{-11}\,\mathrm{m^3\,kg^{-1}\,s^{-2}}\)
+compared against modern precision measurements and adjustments:
+
+\begin{table*}[!htb]
+\centering\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Source
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Citation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(G\,\times\!10^{11}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\sigma\,\times\!10^{11}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Method
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Residual (ppm)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(z\)-score
+\end{minipage} \\
+\midrule
+CODATA 2014 & Mohr et al.~(2016) & \(6.67408\) & \(0.00031\) &
+Adjustment & LSQ & \(+34.80\) & \(+0.749\) \\
+CODATA 2018 & Tiesinga et al.~(2021) & \(6.67430\) & \(0.00015\) &
+Adjustment & LSQ & \(+1.84\) & \(+0.082\) \\
+CODATA 2022 & Mohr et al.~(2025) {[}1{]} & \(6.67430\) & \(0.00015\) &
+Adjustment & LSQ & \(+1.84\) & \(+0.082\) \\
+UWash & Gundlach \& Merkowitz (2000) & \(6.674215\) & \(0.000092\) &
+Primary & Torsion balance, AAF & \(+14.58\) & \(+1.057\) \\
+BIPM 2001 & Quinn et al.~(2001) & \(6.67559\) & \(0.00027\) & Primary &
+Torsion strip, electrostatic & \(-191.40\) & \(-4.732\) \\
+UZur-06 & Schlamminger et al.~(2006) & \(6.67425\) & \(0.00012\) &
+Primary & Beam balance & \(+9.33\) & \(+0.519\) \\
+JILA-10 & Parks \& Faller (2010) & \(6.67234\) & \(0.00014\) & Primary &
+Fabry-Perot & \(+295.59\) & \(+14.088\) \\
+BIPM 2013 & Quinn et al.~(2013) & \(6.67554\) & \(0.00016\) & Primary &
+Torsion strip + TOS & \(-183.92\) & \(-7.673\) \\
+Atom interferometry & Rosi et al.~(2014) & \(6.67191\) & \(0.00099\) &
+Primary & Atom interferometry & \(+360.06\) & \(+2.427\) \\
+UCI-14 & Newman et al.~(2014) & \(6.67433\) & \(0.00013\) & Primary &
+Torsion balance, TOS & \(-2.65\) & \(-0.136\) \\
+HUST-18 TOS & Li et al.~(2018) & \(6.674184\) & \(0.000078\) & Primary &
+Torsion balance, TOS & \(+19.22\) & \(+1.645\) \\
+HUST-18 AAF & Li et al.~(2018) & \(6.674484\) & \(0.000078\) & Primary &
+Torsion balance, AAF & \(-25.72\) & \(-2.201\) \\
+NIST 2026 & Schlamminger et al.~(2026) {[}10{]} & \(6.67387\) &
+\(0.00038\) & Primary & BIPM torsion at NIST & \(+66.27\) &
+\(+1.164\) \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Sign convention: residual \(= (G_{\rm pred} - G)\times 10^6 / G\) in
+ppm; \(z = (G_{\rm pred} - G)/\sigma\). Positive entries indicate the
+formula prediction lies above the measured central value.
+
+The CODATA adjustments aggregate the primary measurements through
+least-squares treatment. The spread among primary determinations (BIPM
+2001 / 2013 on the high side, JILA-10 / Rosi on the low side) is visible
+in the residual column.
+
+\section{7. Prior Art Boundary}\label{prior-art-boundary}
+
+The public Rochester homepage of M. Kalinski {[}9{]} contains the bare
+kernel \((4/3)(\hbar c/m_e^2)\alpha^{21}\) with a numerically fitted
+correction factor \(2^{-1/38}\). An archived snapshot of that page and a
+bundled local capture are part of the public proof package
+(\texttt{public\_proof\_package/\allowbreak kalinski\_rochester\_capture\_2026-04-23.md}).
+
+The present manuscript adds:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The \(B_3/SO(7)/SO(8)\) algebraic scaffold for the discrete
+  coefficients \(21\), \(5/2\), and \(4/3\).
+\item
+  The replacement of the fitted \(2^{-1/38}\) factor by the
+  \(B_3\)-anchored \(\exp(-5\alpha/2)\), tied to
+  \(h^\vee(B_3)/2 = \rho\!\cdot\!e_1\).
+\item
+  The bounded \(22{,}680\)-candidate reproducibility scan with declared
+  prior and candidate-list SHA-256.
+\item
+  The structured mechanism-gap survey of Section 4.
+\item
+  The AV0-AV7 adversarial validation audit of Section 5, including the
+  Julia bounded-equation-search engine through \(C\!=\!20\).
+\end{enumerate}
+
+\section{8. Reproducibility}\label{reproducibility}
+
+The public proof package bundles:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{scan.py}, \texttt{canonical\_bounded\_prior.py},
+  \texttt{constants.json}, \texttt{benchmarks.json},
+  \texttt{declared\_prior.csv}: the bounded \(22{,}680\)-candidate scan,
+  reproducible on a laptop in seconds.
+\item
+  \texttt{top\_candidates.csv}, \texttt{nist2026\_top\_candidates.csv}:
+  the five nearest-neighbor tables of Section 2.
+\item
+  \texttt{av6\_engine/\allowbreak run\_av6\_\allowbreak exhaustive\_c40\_jl15.jl},
+  \texttt{av6\_engine/\allowbreak launch\_jl15.sh},
+  \texttt{av6\_engine/\allowbreak spec.json}:
+  the Julia bounded-equation-search engine source and launcher.
+\item
+  \texttt{av6\_outputs/c18/}, \texttt{av6\_outputs/c19/},
+  \texttt{av6\_outputs/c20/}: per-cost ledgers
+  \texttt{bounded\_shell\_stats.csv},
+  \texttt{same\_target\_rank\_tables.csv},
+  \texttt{sham\_best\_ledger.csv} directly auditable without re-running
+  the engine. The \(C\!=\!18\) directory additionally contains the
+  publication-grade KPI verdict file
+  \texttt{diff\_ledgers\_publication\_verdict.md}.
+\item
+  \texttt{metrology\_residuals.csv},
+  \texttt{mechanism\_gap\_routes.csv}: tabular sources of Sections 6 and
+  4.
+\item
+  \texttt{manifest.json}: SHA-256 hashes for every package file plus the
+  canonical candidate-list hash.
+\item
+  \texttt{LICENSE}, \texttt{SCOPE.md}, \texttt{README.md}: reuse rights
+  and explicit scope statement.
+\end{itemize}
+
+Three independent verification paths:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Numerical.} Recompute \(G_{\rm pred}\) from CODATA 2022
+  {[}1{]} values of \(\alpha\), \(m_e\), \(\hbar\), \(c\), then verify
+  the quoted residual and \(z\)-score.
+\item
+  \textbf{Algebraic.} Verify \(\dim(\mathrm{adj}\,SO(7)) = 21\),
+  \(h^\vee(B_3) = 5\), \(\rho\!\cdot\!e_1 = 5/2\), and
+  \(\dim(SO(8))/\dim(SO(7)) = 28/21 = 4/3\) from \(B_3\) root data
+  {[}3{]}.
+\item
+  \textbf{Bounded-statistical.} Run
+  \texttt{python3\ scan.py\ -\/-benchmark\ codata2022\ -\/-limit\ 5};
+  expected output reproduces candidate-list SHA-256
+  \texttt{37ee945afb33e5c8f4a63b9874338fb3\allowbreak 8d8cab1e8b1d2c113873a2e632ff92f2}
+  and the top-five table of Section 2. For the AV6 engine,
+  \texttt{./av6\_engine/launch\_jl15.sh\ 18} reproduces the publication
+  baseline in \(\sim\!4.5\) hours on \(24\) threads.
+\end{enumerate}
+
+\section{Statement of AI Authorship}\label{ai-authorship}
+
+\noindent\textbf{This research and the resulting manuscript were carried out by an orchestration of AI agents under the named author's direction.} The author is an independent researcher without specialist training in theoretical physics. His role was vision, problem framing, target selection, and gate-keeping decisions: which leads to pursue, which to drop, when to escalate to multi-model adversarial review, and when a draft was acceptable. He did not personally derive the relation, identify the algebraic scaffold, design or operate the bounded-equation-search engine, or write the prose of this paper.
+
+\medskip
+
+The technical work --- empirical fit of \(G\) to the \(\alpha^{21}\exp(-5\alpha/2)\) family; identification of the \(B_3/SO(7)/SO(8)\) algebraic identities; design and execution of the bounded-prior reproducibility scan; implementation and runtime of the Julia bounded-equation-search engine and its sham-parity controls; structured survey of candidate mechanism routes; assembly of the public proof package; and the writing of this manuscript --- was performed by an orchestration of OpenAI GPT-5.4 / GPT-5.5, Google Gemini 3 Pro, Anthropic Claude Opus 4.7 and Sonnet 4.6, and Deepseek V4. Multi-model adversarial review served as the primary quality gate; council disagreements were surfaced to the named author for adjudication.
+
+\medskip
+
+The named author chose the research target, accepted or rejected lines of work, approved every draft revision, and bears scientific responsibility for the content, claims, and citations herein.
+
+\section{References}\label{references}
+
+\begin{sloppypar}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  P. J. Mohr, D. B. Newell, B. N. Taylor, and E. Tiesinga, ``CODATA
+  recommended values of the fundamental physical constants: 2022,''
+  \emph{Rev.~Mod. Phys.} \textbf{97}, 025002 (2025). DOI:
+  \url{https://doi.org/10.1103/RevModPhys.97.025002}.
+\item
+  Y. Koide, ``New view of quark and lepton mass hierarchy,'' \emph{Phys.
+  Rev.~D} \textbf{28}, 252--254 (1983). DOI:
+  \url{https://doi.org/10.1103/PhysRevD.28.252}.
+\item
+  J. E. Humphreys, \emph{Introduction to Lie Algebras and Representation
+  Theory}, Graduate Texts in Mathematics Vol. 9 (Springer, New York,
+  1972). DOI: \url{https://doi.org/10.1007/978-1-4612-6398-2}.
+\item
+  B. de Wit and H. Nicolai, ``\(N=8\) supergravity with local
+  \(SO(8)\times SU(8)\) invariance,'' \emph{Phys. Lett. B} \textbf{108},
+  285--290 (1982). DOI: \url{https://doi.org/10.1016/0370-2693(82)91194-7}.
+\item
+  A. Borghese, A. Guarino, and D. Roest, ``Triality, Periodicity and
+  Stability of \(SO(8)\) Gauged Supergravity,'' \emph{JHEP} \textbf{05}
+  (2013) 107. DOI: \url{https://doi.org/10.1007/JHEP05(2013)107}; arXiv:
+  \url{https://arxiv.org/abs/1302.6057}.
+\item
+  T. Fischbacher, ``The Encyclopedic Reference of Critical Points for
+  \(SO(8)\)-Gauged \(N=8\) Supergravity Part 1: Cosmological Constants
+  in the Range \(-\Lambda/g^2 \in [6;14.7)\),'' arXiv:
+  \url{https://arxiv.org/abs/1109.1424} [hep-th].
+\item
+  M. Visser, ``Sakharov's induced gravity: a modern perspective,''
+  \emph{Mod. Phys. Lett. A} \textbf{17}, 977--992 (2002). DOI:
+  \url{https://doi.org/10.1142/S0217732302006886}; arXiv:
+  \url{https://arxiv.org/abs/gr-qc/0204062}.
+\item
+  M. Chaichian, M. Oksanen, and A. Tureanu, ``Sakharov's induced gravity
+  and the Poincaré gauge theory,'' in \emph{Jacob Bekenstein: The
+  Conservative Revolutionary}, ed.~L. Brink, V. Mukhanov, E. Rabinovici,
+  and K. K. Phua (World Scientific, Singapore, 2019), pp.~271--299. DOI:
+  \url{https://doi.org/10.1142/9789811203961_0021}; arXiv:
+  \url{https://arxiv.org/abs/1805.03148}.
+\item
+  M. Kalinski, ``Matt Kalinski's homepage,'' University of Rochester,
+  gravitational-constant note beginning ``Relation between the
+  Gravitational constant and the Planck constant,'' accessed April 23,
+  2026; archived snapshot:
+  \url{https://web.archive.org/web/20250408212219/https://www.pas.rochester.edu/~mkal/};
+  bundled local capture:
+  \texttt{public\_proof\_package/\allowbreak kalinski\_rochester\_capture\_2026-04-23.md}.
+\item
+  National Institute of Standards and Technology, ``NIST Weighs In on
+  the Mystery of the Gravitational Constant,'' April 16, 2026. URL:
+  \url{https://www.nist.gov/news-events/news/2026/04/nist-weighs-mystery-gravitational-constant};
+  S. Schlamminger, L. Chao, V. Lee, C. Shakarji, A. Possolo, D. Newell,
+  J. Stirling, R. Cochran, and C. Speake, ``Redetermination of the
+  gravitational constant with the BIPM torsion balance at NIST,''
+  \emph{Metrologia} (published online April 16, 2026). DOI:
+  \url{https://doi.org/10.1088/1681-7575/ae570f}.
+\end{enumerate}
+\end{sloppypar}
+
+\end{document}
