@@ -11,7 +11,20 @@ A single closed-form expression that reproduces Newton's gravitational constant 
 G  =  (4/3) · (ℏ c / m_e²) · α²¹ · exp(−5α/2)
 ```
 
-Evaluated at CODATA 2022, this matches the measured value of `G` to within the 2.2 × 10⁻⁵ relative uncertainty of the CODATA value itself. The relation was discovered by an exhaustive bounded equation search across hundreds of millions of candidates and survived a battery of sham-parity, swap, and family-classification tests designed to rule out numerical accidents.
+Evaluated at CODATA 2022, this matches the measured value of `G` to within the 2.2 × 10⁻⁵ relative uncertainty of the CODATA value itself. The relation was discovered by an exhaustive bounded equation search through 2.67 billion raw expressions yielding 777,191 canonical-unique survivors at enumeration cost cap C=21 (jl15 engine, completed 2026-05-20), and survived a battery of sham-parity, swap, and family-classification tests designed to rule out numerical accidents.
+
+**Bounded enumeration progression (jl15 publication baseline):**
+
+| Cost cap | Wall time | Canonical-unique kept | Growth factor | sham₄₀ match-or-beat |
+|---:|---:|---:|---:|---:|
+| C18 | 4 h 35 m | 362,163 | 1.42 | 0 / 256 |
+| C19 | 8 h 54 m | 501,872 | 1.39 | 1 / 256 |
+| C20 | 28 h 12 m | 654,957 | 1.31 | 1 / 256 |
+| C21 | 85 h 24 m | 777,191 | 1.19 | 1 / 256 |
+
+Canonical G `(4/3)·α²¹·exp(−5α/2)` holds rank-1 at budget=40 throughout C18→C21 with rel_err = 1.85 × 10⁻⁶ stable; the growth factor narrows monotonically (1.42 → 1.19), which is the engine signature of a real canonical attractor whose basin contracts as enumeration depth grows. The single persistent sham match at budget=40 from C19 onward (`sham₄₀ = 1 / 256`) is classified `TRASH_BROAD_GRAMMAR` — a structurally broader expression that numerically matches one random sham target, not a physically motivated alternative. This is disclosed for full audit transparency.
+
+The preprint has been submitted to arXiv `physics.gen-ph` (submission id 7578736, 2026-05-15, awaiting moderator acceptance). The Zenodo deposit above remains the canonical versioned archive.
 
 The paper documents what the relation does and does not claim. It claims that the closed form is an empirical match to seven significant figures with no free parameters. It does **not** claim a derivation from first principles, nor a mechanism. The exponents `(21, 5/2)` are reported as a phenomenological fingerprint with a discussion of which symmetry-group dimensions (B₃, SO(7), SO(8)) make those integers structurally natural, and a transparent ledger of what would be required to upgrade the relation from coincidence to mechanism.
 
