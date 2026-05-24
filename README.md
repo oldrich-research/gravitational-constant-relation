@@ -70,6 +70,10 @@ The `public_proof_package/` directory contains the bounded-equation-search engin
 
 The DOI `10.5281/zenodo.20120946` resolves to the published version. The all-versions concept DOI `10.5281/zenodo.20120945` resolves to whichever version is current; for citation purposes prefer the version DOI to lock the exact snapshot that was reviewed.
 
+## Questions?
+
+See [FAQ.md](FAQ.md) — anticipated questions about the result, the verification, AI authorship, the arXiv decline, and the broader research programme.
+
 ## Contact
 
 Oldřich Dvořák — independent researcher — `oldrich@oldrich.me`
