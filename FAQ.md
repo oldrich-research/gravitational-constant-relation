@@ -22,6 +22,21 @@ So: gravity always had a formula for HOW it works. Now its STRENGTH has a formul
 
 What we still don't know is *why* this formula for `G` works. That's the next question — and that's where a future Nobel-level breakthrough would happen. This paper isn't the breakthrough. It's the precise pattern that forces the next breakthrough.
 
+### Is this the first AI-authored physics paper with a substantive finding?
+
+As far as we can tell, yes — and that is part of what makes the paper a news event independent of the physics itself.
+
+Prior AI-assisted physics work exists, but the human did the substantive intellectual lift and AI was a tool — pattern matching, fitting, simulation, literature search. Prior "AI-discovered" results in adjacent fields (DeepMind's AlphaTensor for matrix multiplication, AlphaGeometry for olympiad geometry, AlphaFold for protein structure) are mathematics or biology and were produced inside large research labs with bespoke training infrastructure.
+
+This paper is the first publicly known case where:
+1. The substantive intellectual work (algebraic search, enumeration, cross-validation, manuscript drafting) was performed by AI agents end-to-end under human direction
+2. The human director is a non-academic (no university degree, no formal scientific training, no institutional affiliation)
+3. The result is a substantive new finding in fundamental physics — a closed-form expression for one of the fundamental constants of nature
+4. The work was carried out on consumer-grade AI subscriptions, no custom training, no GPU rental, no API top-ups
+5. The methodology layer (the four open-source harness tools at github.com/Oldrich333) is publicly released, so the work is in principle replicable by another individual
+
+If a reader can point to a prior paper that satisfies all five criteria — please tell us, that would itself be a useful datapoint. So far nobody has.
+
 ### What did the paper find?
 
 A mathematical expression that, when you plug in the electron's mass, the fine-structure constant, ℏ, and the speed of light, gives you the gravitational constant G to 1.86 parts per million of the value physicists measure in the lab. The expression is:
