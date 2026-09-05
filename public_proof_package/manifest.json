@@ -1,6 +1,6 @@
 {
   "package": "g-decode_public_proof_package",
-  "generated_at_utc": "2026-05-10T13:00:00Z",
+  "generated_at_utc": "2026-09-05T07:08:19Z",
   "note": "The files ledger excludes manifest.json itself to avoid self-referential checksum churn.",
   "candidate_list_sha256": "37ee945afb33e5c8f4a63b9874338fb38d8cab1e8b1d2c113873a2e632ff92f2",
   "bounded_prior_total_combinations": 22680,
@@ -32,8 +32,10 @@
     "publication_baseline_cost": 18,
     "extending_costs": [
       19,
-      20
+      20,
+      21
     ],
+    "readme_headline_cost": 21,
     "canonical_rank1_invariant": {
       "expression": "(4/3) * alpha^21 * exp((-5/2)*alpha)",
       "rel_err": "1.85e-6",
@@ -44,7 +46,8 @@
       "invariant_across_costs": [
         18,
         19,
-        20
+        20,
+        21
       ]
     },
     "sham_parity": {
@@ -52,10 +55,12 @@
       "max_match_or_beat": {
         "C18_budget40": "0/256",
         "C19_budget40": "1/256",
-        "C20_budget40": "1/256"
+        "C20_budget40": "1/256",
+        "C21_budget40": "1/256"
       },
       "drift_attribution": "TRASH_BROAD_GRAMMAR pow expression at sham_index=28 carrying no alpha dependence"
-    }
+    },
+    "spec_mode_note": "av6_engine/spec.json declares mode='pilot_beam_pruned_not_exhaustive' and a 'prune' block from the original AV6 planning-stage spec. Neither field is read by run_av6_exhaustive_c40_jl15.jl at runtime (grep shows no spec['prune']/spec['mode'] access); the file is pinned only via the hardcoded EXPECTED_SPEC_FILE_SHA256 constant in the engine source for anti-drift provenance. The executed C18-C21 runs are exhaustive per-cost canonical enumerations: every *_outputs/bounded_shell_stats.csv row shows kept == canonical_unique, i.e. nothing is pruned beyond canonical-form dedup."
   },
   "files": [
     {
@@ -65,8 +70,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "c9134d1f5d6adf96d205947a66c4390e37a98ea44d38b60db925d15d679df59c",
-      "bytes": 8079
+      "sha256": "dc19cf0f35d7e0b9bbfcb028ebead914d58a9974fbd57f86297f82ee129893c3",
+      "bytes": 9434
     },
     {
       "path": "SCOPE.md",
@@ -197,6 +202,26 @@
       "path": "av6_outputs/c20/sham_best_ledger.csv",
       "sha256": "64303f0c04ac46a42943389c5dc941a97d0472b300995e899471c546d0e7e05b",
       "bytes": 105084
+    },
+    {
+      "path": "av6_outputs/c21/bounded_shell_stats.csv",
+      "sha256": "85576587c3d994b58766f8eac3c35c8c894dbb982fde090e359419cf9dd4a014",
+      "bytes": 1034
+    },
+    {
+      "path": "av6_outputs/c21/same_target_rank_tables.csv",
+      "sha256": "718338a2f898aa204d988d31031c36ffd780c0dd53e65f3fa438f5b9fdf794ce",
+      "bytes": 41903
+    },
+    {
+      "path": "av6_outputs/c21/sham_best_ledger.csv",
+      "sha256": "8716a19e124b1fe181d956856dfa10a4a48056af57a2d7f9f8154f52bf7232f6",
+      "bytes": 104920
+    },
+    {
+      "path": "av6_outputs/c21/PROVENANCE.md",
+      "sha256": "4b95fe382df358291b66547c0bb1e4c8ca9244fccf6d40d0db11165f44c2f0c6",
+      "bytes": 4493
     }
   ]
 }
