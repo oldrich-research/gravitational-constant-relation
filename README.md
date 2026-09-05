@@ -26,7 +26,7 @@ Canonical G `(4/3)·α²¹·exp(−5α/2)` holds rank-1 at budget=40 throughout 
 
 Every cell in this table is a hashed, bundled artifact, not a claim taken on faith: the per-cost CSV ledgers for `C18`–`C21` live in `public_proof_package/av6_outputs/c{18,19,20,21}/`, checksummed in `public_proof_package/manifest.json`; the `C21` row's provenance (source run, restart timeline, and a field-by-field reproduction of this row from the bundled files) is in `public_proof_package/av6_outputs/c21/PROVENANCE.md`.
 
-The preprint has been submitted to arXiv `physics.gen-ph` (submission id 7578736, 2026-05-15, awaiting moderator acceptance). The Zenodo deposit above remains the canonical versioned archive.
+An arXiv `physics.gen-ph` submission (id 7578736, 2026-05-15) was declined by arXiv moderation without technical engagement — see [FAQ.md](FAQ.md), "What happened with arXiv?", for the full account including the rejection letter's wording. The Zenodo deposit above is the canonical versioned archive.
 
 The paper documents what the relation does and does not claim. It claims that the closed form is an empirical match to seven significant figures with no free parameters. It does **not** claim a derivation from first principles, nor a mechanism. The exponents `(21, 5/2)` are reported as a phenomenological fingerprint with a discussion of which symmetry-group dimensions (B₃, SO(7), SO(8)) make those integers structurally natural, and a transparent ledger of what would be required to upgrade the relation from coincidence to mechanism.
 
